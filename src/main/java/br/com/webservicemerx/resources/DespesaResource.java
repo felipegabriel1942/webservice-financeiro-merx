@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -31,6 +32,7 @@ public class DespesaResource {
 		return ResponseEntity.ok().body(obj);
 	}
 	
+	@CrossOrigin
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> salvarDespesa(@Valid @RequestBody Despesa obj) {
 		obj = service.salvarDespesa(obj);
@@ -41,8 +43,16 @@ public class DespesaResource {
 	
 	@CrossOrigin
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<Despesa>> listarTodasAsDespesas(){
-		List<Despesa> list = service.listarTodasAsDespesas();
+	public ResponseEntity<List<Despesa>> listarTodasAsDespesasPorUsuario(
+			@RequestParam(value="usuario") Integer fkUsuario){
+		List<Despesa> list = service.listarDespesasPorUsuario(fkUsuario);
 		return ResponseEntity.ok().body(list);
+	}
+	
+	@CrossOrigin
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Void> deletarDespesa(@PathVariable Integer id){
+		service.delete(id);
+		return ResponseEntity.noContent().build();
 	}
 }

@@ -51,6 +51,10 @@ public class DespesaService {
 		return despesaRepository.findAll();
 	}
 	
+	public List<Despesa> listarDespesasPorUsuario(Integer fkUsuario){
+		return despesaRepository.buscarDespesasPorUsuario(fkUsuario);
+	}
+	
 	
 
 	private void atualizarDados(Despesa newObj, Despesa obj) {

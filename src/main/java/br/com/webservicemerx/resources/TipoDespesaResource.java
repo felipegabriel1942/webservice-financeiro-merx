@@ -1,10 +1,10 @@
 package br.com.webservicemerx.resources;
 
-import javax.validation.Valid;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,19 +19,10 @@ public class TipoDespesaResource {
 	@Autowired
 	private TipoDespesaService service;
 	
-	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Void> insert(@Valid @RequestBody TipoDespesa obj){
-		obj = service.insert(obj);
-		
-		/**
-		 * Quando quer receber um objeto de retorno
-		 */
-		//URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
-		//return ResponseEntity.created(uri).build();
-		
-		/**
-		 * Quando não quer receber um objeto de retorno
-		 */		
-		return ResponseEntity.noContent().build();
-	}
+	@CrossOrigin
+	@RequestMapping(method = RequestMethod.GET)
+	public ResponseEntity<List<TipoDespesa>> listarTodosOsTiposDespesa(){
+		List<TipoDespesa> list = service.listarTodosOsTiposDespesa();
+		return ResponseEntity.ok().body(list);
+	} 
 }

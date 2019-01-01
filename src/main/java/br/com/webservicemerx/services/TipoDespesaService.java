@@ -1,5 +1,7 @@
 package br.com.webservicemerx.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,10 +13,8 @@ public class TipoDespesaService {
 	@Autowired
 	private TipoDespesaRepository tipoDespesaRepository;
 	
-	
-	public TipoDespesa insert(TipoDespesa obj) {
-		obj.setId(null);
-		obj = tipoDespesaRepository.save(obj);
-		return obj;
+	public List<TipoDespesa> listarTodosOsTiposDespesa() {
+		return tipoDespesaRepository.findAll();
 	}
+	
 }
