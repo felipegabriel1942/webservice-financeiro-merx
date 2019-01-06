@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,5 +25,12 @@ public class TipoDespesaResource {
 	public ResponseEntity<List<TipoDespesa>> listarTodosOsTiposDespesa(){
 		List<TipoDespesa> list = service.listarTodosOsTiposDespesa();
 		return ResponseEntity.ok().body(list);
-	} 
+	}
+	
+	@CrossOrigin
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public ResponseEntity<?> buscarTipoDespesa(@PathVariable Integer id){
+		TipoDespesa obj = service.buscarTipoDespesa(id);
+		return ResponseEntity.ok().body(obj);
+	}
 }
