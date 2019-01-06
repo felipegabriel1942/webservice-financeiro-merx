@@ -5,6 +5,7 @@
 	<groupId>webservice-financeiro-merx</groupId>
 	<artifactId>webservice-financeiro-merx</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 
 	<name>aplicativo-spring-1</name>
 	<description>Estudo de caso java para curso de modelagem conceitual com UML</description>

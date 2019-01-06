@@ -55,4 +55,13 @@ public class DespesaResource {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
+	
+	@CrossOrigin
+	@RequestMapping(method = RequestMethod.PUT)
+	public ResponseEntity<Void> atualizarDespesa(@Valid @RequestBody Despesa obj) {
+		obj = service.atualizarDespesa(obj);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+				.path("/{id}").buildAndExpand(obj.getId()).toUri();
+		return ResponseEntity.created(uri).build();
+	}
 }
