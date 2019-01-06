@@ -26,6 +26,7 @@ public class DespesaResource {
 	@Autowired
 	private DespesaService service;
 	
+	@CrossOrigin
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> buscarDespesa(@PathVariable Integer id){
 		Despesa obj = service.buscarDespesa(id);
