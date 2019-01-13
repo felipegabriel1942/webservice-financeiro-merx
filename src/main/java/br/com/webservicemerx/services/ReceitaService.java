@@ -26,6 +26,12 @@ public class ReceitaService {
 		}
 	}
 	
+	
+	public Receita salvarReceita(Receita obj) {
+		obj.setId(null);
+		obj = receitaRepository.save(obj);
+		return obj;
+	}
 	public Receita atualizarReceita(Receita obj) {
 		Receita newObj = buscarReceita(obj.getId());
 		atualizarDados(newObj, obj);
@@ -45,7 +51,7 @@ public class ReceitaService {
 		return receitaRepository.findAll();
 	}
 	
-	public List<Receita> listarDespesasPorUsuario(Integer fkUsuario) {
+	public List<Receita> listarReceitasPorUsuario(Integer fkUsuario) {
 		return receitaRepository.buscarReceitasPorUsuario(fkUsuario);
 	}
 	
