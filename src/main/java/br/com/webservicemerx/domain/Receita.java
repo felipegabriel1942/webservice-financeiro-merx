@@ -36,14 +36,14 @@ public class Receita implements Serializable{
 	@Getter
 	@Setter
 	@Column(name="fk_usuario")
-	private Long codigoUsuario;
+	private Integer codigoUsuario;
 	
 	@Getter
 	@Setter
 	@Column(name="ano_mes")
 	private String anoMes;
 
-	public Receita(Integer id, String descricao, Double valor, Long codigoUsuario, String anoMes) {
+	public Receita(Integer id, String descricao, Double valor, Integer codigoUsuario, String anoMes) {
 		this.id = id;
 		this.descricao = descricao;
 		this.valor = valor;
