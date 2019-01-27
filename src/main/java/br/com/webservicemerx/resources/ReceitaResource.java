@@ -20,7 +20,7 @@ import br.com.webservicemerx.domain.Receita;
 import br.com.webservicemerx.services.ReceitaService;
 
 @RestController
-@RequestMapping(value = "/despesas")
+@RequestMapping(value = "/receitas")
 public class ReceitaResource {
 	
 	@Autowired
