@@ -14,7 +14,7 @@ import br.com.webservicemerx.dto.DashboardDto;
 import br.com.webservicemerx.services.DashboardDtoService;
 
 @RestController
-@RequestMapping(value = "/home")
+@RequestMapping(value = "/dashboard")
 public class DashboardDtoResource {
 
 	@Autowired
